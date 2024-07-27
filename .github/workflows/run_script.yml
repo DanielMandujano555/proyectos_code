@@ -6,7 +6,7 @@ on:
       - main
 
   schedule:
-    - cron: '0 1 * * *'  # Ejecutar a las 8PM todos los días (UTC-5)
+    - cron: '0 2 * * *'  # Ejecutar a las 12:50 AM UTC todos los días (7:50 PM UTC-5)
 
 jobs:
   run-script:
@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.10'
+        python-version: '3.10'  # Utilizar Python 3.10
 
     - name: Install dependencies
       run: |
