@@ -1,8 +1,12 @@
 name: Run HubSpot Script
 
 on:
+  push:
+    branches:
+      - main
+
   schedule:
-    - cron: '45 0 * * *'  # Ejecutar a las 8PM todos los días (UTC-5)
+    - cron: '0 1 * * *'  # Ejecutar a las 8PM todos los días (UTC-5)
 
 jobs:
   run-script:
