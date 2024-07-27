@@ -1,0 +1,31 @@
+name: Run HubSpot Script
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # Ejecutar a las 8PM todos los días (UTC-5)
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas==1.4.0 hubspot-api-client unidecode google-auth google-auth-oauthlib google-auth-httplib2 gspread openpyxl
+
+    - name: Copy service account key
+      run: |
+        mkdir -p ~/.google/
+        echo "${{ secrets.GOOGLE_CREDENTIALS }}" > ~/.google/service-account-file.json
+
+    - name: Run script
+      run: python script_export.py
