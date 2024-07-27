@@ -1,0 +1,9 @@
+pandas==1.4.3
+numpy==1.21.6
+hubspot-api-client
+unidecode
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+gspread
+openpyxl
